@@ -74,9 +74,3 @@ for i in range(1,10):
         for line in in_p:
             if not any(more_bad_word in line for more_bad_word in more_bad_words):
                 new_p.write(line)
-       
-
-
-
-
-        
