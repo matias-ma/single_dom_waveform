@@ -1,5 +1,7 @@
 # python3
 
+# This script uses the file created in time_pos.py and removes all but the numbers.
+
 import os 
 from ast import literal_eval
 import pandas as pd
@@ -38,10 +40,6 @@ for i in range(1,10):
                 t_data = t_data.replace('[', '')
                 t_data = t_data.replace(']', '')
                 t_data = t_data.replace('  ', ' ')
-                # t_data = t_data.replace('[ ', '')
-                # t_data = t_data.replace(' ]', '')
-                # t_data = t_data.replace(' ', ',')
-                # t_data = t_data.replace(',,', ',')
 
             with open('/home/mandia/waveform/wf/time/time'+str(i)+'_'+str(x)+'.txt', 'w') as file:
                 file.write(t_data)
@@ -56,10 +54,7 @@ for i in range(1,10):
                 t_data = t_data.replace('[', '')
                 t_data = t_data.replace(']', '')
                 t_data = t_data.replace('  ', ' ')
-                # t_data = t_data.replace('[ ', '')
-                # t_data = t_data.replace(' ]', '')
-                # t_data = t_data.replace(' ', ',')
-                # t_data = t_data.replace(',,', ',')  
+                 
             with open('/home/mandia/waveform/wf/time/many_body'+str(i)+'_'+str(x)+'.txt','w') as file:
                 file.write(t_data)
             os.system('rm /home/mandia/waveform/wf/time/time'+str(i)+'_'+str(x)+'.txt')
@@ -71,7 +66,7 @@ for i in range(1,10):
             p_data = p_data.replace('                   X : ', '')   
             p_data = p_data.replace('                   Y : ', '')
             p_data = p_data.replace('                   Z : ', '')
-            # p_data = p_data.replace('\n', ',')
+
         with open('/home/mandia/waveform/wf/pos/pos'+str(i)+'_'+str(x)+'.txt', 'w') as file:
             file.write(p_data)
         with open('/home/mandia/waveform/wf/pos/pos'+str(i)+'_'+str(x)+'.txt', 'rb+') as filehandle:
@@ -82,9 +77,7 @@ for i in range(1,10):
         p = np.array([])
         for line in pos:
             line = line.strip()
-            p = np.append(p,float(line))
-        # p = np.reshape(p, (int(len(pos.readlines())/3),3))
-        
+            p = np.append(p,float(line))        
         
         _, idx = np.unique(p, return_index=True)
         p = p[np.sort(idx)]
@@ -92,14 +85,14 @@ for i in range(1,10):
             p = np.reshape(p, (2,3))
             with open('/home/mandia/waveform/wf/pos/pos'+str(i)+'_'+str(x)+'.txt', 'w') as file:
                 file.write(str(p))
+                
             with open('/home/mandia/waveform/wf/pos/pos'+str(i)+'_'+str(x)+'.txt', 'r') as file:
                 p_data = file.read()
                 p_data = p_data.replace('[ ', '')
                 p_data = p_data.replace('[', '')
                 p_data = p_data.replace(']', '')
                 p_data = p_data.replace('  ', ' ')
-                # p_data = p_data.replace('  ', ',')
-                # p_data = p_data.replace(' ', ',')
+                
             with open('/home/mandia/waveform/wf/pos/pos'+str(i)+'_'+str(x)+'.txt', 'w') as file:
                 file.write(p_data)
 
@@ -112,23 +105,11 @@ for i in range(1,10):
                     p_data = file.read()
                     p_data = p_data.replace('[', '')
                     p_data = p_data.replace(']', '')
-                    # p_data = p_data.replace(' ', ',')
+
                 with open('/home/mandia/waveform/wf/pos/many_body'+str(i)+'_'+str(x)+'.txt', 'w') as file:
                     file.write(p_data)
                 os.system('rm /home/mandia/waveform/wf/pos/pos'+str(i)+'_'+str(x)+'.txt')
                 
             except:
                 pass
-        
-            
-        
-        
-
-
-
-        
-
-                
-
-
         
