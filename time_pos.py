@@ -1,5 +1,7 @@
 # python3
 
+# This script gets the time and position of each of the two cascades in an HNL event
+
 from icecube import icetray,dataio,dataclasses, simclasses, recclasses
 import os
 
@@ -72,13 +74,6 @@ for i in range(1,10):
         for line in in_p:
             if not any(more_bad_word in line for more_bad_word in more_bad_words):
                 new_p.write(line)
-
-
-
-        
-
-        
-
        
 
 
